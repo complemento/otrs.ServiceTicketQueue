@@ -4,6 +4,7 @@ on:
   push:
     paths:
     - "Custom/*.sopm"
+    - ".github/workflows/*.yml"
 
 jobs:
 
@@ -25,12 +26,19 @@ jobs:
     - name: Get version tag
       id: get_version
       run: echo ::set-output name=VERSION::$(grep '<Version>' Custom/*.sopm | sed -r 's/.+>(.+)<.+/\1/')
+
+    - uses: rlespinasse/github-slug-action@master
+    - name: Print slug variables
+      run: |
+        echo ${{ env.GITHUB_REF_SLUG }}
+        echo ${{ env.GITHUB_HEAD_REF_SLUG }}
+        echo ${{ env.GITHUB_BASE_REF_SLUG }}
       
     - name: Upload OPM
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        automatic_release_tag: "latest"
+        automatic_release_tag: ${{ env.GITHUB_REF_SLUG }}
         prerelease: false
         title: ${{ steps.get_version.outputs.VERSION }}
         files: |
