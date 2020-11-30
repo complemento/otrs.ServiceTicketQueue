@@ -26,15 +26,13 @@
             </Hash>
         </Value>
     </Setting>
-    <Setting Name="Ticket::EventModulePost###ServiceTicketQueue" Required="0" Valid="1">
-        <Description Translatable="1">Event module registration.</Description>
-        <Navigation>Core::Ticket</Navigation>
+    <Setting Name="AutoloadPerlPackages###9999-Ticket" Required="1" Valid="1">
+        <Description Translatable="1">Kernel::System::Ticket module methods override</Description>
+        <Navigation>Core::Autoload</Navigation>
         <Value>
-            <Hash>
-                <Item Key="Module">Kernel::System::Ticket::Event::ServiceTicketQueue</Item>
-                <Item Key="Transaction">1</Item>
-                <Item Key="Event">TicketCreate|TicketServiceUpdate</Item>
-            </Hash>
+            <Array>
+                <Item ValueType="String">Kernel::Autoload::Ticket</Item>
+            </Array>
         </Value>
     </Setting>
 </otrs_config>
