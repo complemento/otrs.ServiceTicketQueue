@@ -3,8 +3,14 @@ name: OPM Maker
 on: 
   push:
     paths:
-    - "Custom/*.sopm"
-    - ".github/workflows/*.yml"
+      - "Custom/*.sopm"
+      - ".github/workflows/*.yml"
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning'
 
 jobs:
 
@@ -27,7 +33,7 @@ jobs:
       id: get_version
       run: echo ::set-output name=VERSION::$(grep '<Version>' Custom/*.sopm | sed -r 's/.+>(.+)<.+/\1/')
 
-    - uses: rlespinasse/github-slug-action@master
+    - uses: rlespinasse/github-slug-action@1.1.1
     - name: Print slug variables
       run: |
         echo ${{ env.GITHUB_REF_SLUG }}
