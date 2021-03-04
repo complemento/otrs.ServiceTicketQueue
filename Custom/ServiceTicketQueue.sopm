@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <otrs_package version="1.0">
     <Name>ServiceTicketQueue</Name>
-    <Version>6.0.2</Version>
+    <Version>6.0.3-beta</Version>
     <Vendor>Ligero [Community]</Vendor>
     <URL>http://www.complemento.net.br/</URL>
     <License>GNU GENERAL PUBLIC LICENSE Version 2, June 1991</License>
@@ -21,6 +21,7 @@
     <Filelist>
         <File Location="Custom/ServiceTicketQueue.sopm" Permission="644"></File>
         <File Location="Kernel/Config/Files/XML/ServiceTicketQueue.xml" Permission="644"></File>
+        <File Location="Kernel/Output/HTML/ServicePreferences/Queue.pm" Permission="644"></File>
         <File Location="Kernel/Output/HTML/ServicePreferences/Queue.pm" Permission="644"></File>
         <File Location="Kernel/Autoload/Ticket.pm" Permission="644"></File>
     </Filelist>
